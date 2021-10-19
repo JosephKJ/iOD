@@ -1,0 +1,58 @@
+_BASE_: "../../Base-RCNN-C4.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    # Maximum number of foreground classes to expect
+    NUM_CLASSES: 20
+    # Flag to turn on/off Incremental Learning
+    LEARN_INCREMENTALLY: True
+    # Flag to select whether to learn base classes or iOD expanded classes
+    TRAIN_ON_BASE_CLASSES: True
+    # Number of base classes; these classes would be trained if TRAIN_ON_BASE_CLASSES is set to True
+    NUM_BASE_CLASSES: 10
+    # Number of novel classes; these classes would be trained if TRAIN_ON_BASE_CLASSES is set to False
+    NUM_NOVEL_CLASSES: 10
+    POSITIVE_FRACTION: 0.25
+    NMS_THRESH_TEST: 0.3
+  RPN:
+    FREEZE_WEIGHTS: False
+  ROI_BOX_HEAD:
+    CLS_AGNOSTIC_BBOX_REG: True
+INPUT:
+  MIN_SIZE_TRAIN: (480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800)
+  MIN_SIZE_TEST: 800
+DATASETS:
+  TRAIN: ('voc_2007_trainval',)
+  TEST: ('voc_2007_test',)
+SOLVER:
+  STEPS: (12000, 16000)
+  MAX_ITER: 18000  # 17.4 epochs
+  WARMUP_ITERS: 100 # 100
+  LR_SCHEDULER_NAME: WarmupMultiStepLR
+  CHECKPOINT_PERIOD: 2000
+OUTPUT_DIR: ./output/first_10
+VIS_PERIOD: 17000
+DISTILL:
+  ENABLE: False
+  BACKBONE: True
+  RPN: False
+  ROI_HEADS: True
+  ONLY_FG_ROIS: False
+  # (1-LOSS_WEIGHT) (CLF / REG loss) + (LOSS_WEIGHT) ROI-Distillation
+  LOSS_WEIGHT: 0.2
+# Warp Grad
+WG:
+  ENABLE: False
+  TRAIN_WARP_AT_ITR_NO: 20
+  WARP_LAYERS: ("module.roi_heads.res5.2.conv3.weight",)
+  NUM_FEATURES_PER_CLASS: 100
+  NUM_IMAGES_PER_CLASS: 10
+  BATCH_SIZE: 2
+  USE_FEATURE_STORE: True
+  IMAGE_STORE_LOC: './image_store_10.pth'
+
+SEED: 9999
+VERSION: 2

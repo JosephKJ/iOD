@@ -1,0 +1,50 @@
+_BASE_: "../Base-RCNN-C4.yaml"
+MODEL:
+  WEIGHTS: "/home/joseph/detectron2/output/coco_next_40/model_0144999.pth"
+  BASE_WEIGHTS: "/home/joseph/detectron2/output/coco_next_40/model_0144999.pth"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    NUM_CLASSES: 80
+    LEARN_INCREMENTALLY: False
+    TRAIN_ON_BASE_CLASSES: False
+    NUM_BASE_CLASSES: 40
+    NUM_NOVEL_CLASSES: 40
+    NMS_THRESH_TEST: 0.4
+DATASETS:
+  TRAIN: ("coco_2014_train",)
+  TEST: ("coco_2014_val",)
+
+OUTPUT_DIR: ./output/coco_next_40_144999_FT
+SEED: 3074309
+VERSION: 2
+
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.02
+  STEPS: (140000, 160000)
+  MAX_ITER: 160100
+
+WG:
+  ENABLE: False
+  TRAIN_WARP_AT_ITR_NO: 20
+  WARP_LAYERS: ("module.roi_heads.res5.2.conv3.weight",)
+  NUM_FEATURES_PER_CLASS: 100
+  NUM_IMAGES_PER_CLASS: 10
+  BATCH_SIZE: 2
+  USE_FEATURE_STORE: True
+  IMAGE_STORE_LOC: '/home/joseph/detectron2/40_image_store_ft.pth'
+
+DISTILL:
+  ENABLE: False
+  BACKBONE: True
+  RPN: False
+  ROI_HEADS: True
+  ONLY_FG_ROIS: False
+  LOSS_WEIGHT: 0.2
+
+FINETUNE:
+  MIN_NUM_IMG_PER_CLASS: 10
+  BATCH_SIZE: 2
+  USE_IMAGE_STORE: False

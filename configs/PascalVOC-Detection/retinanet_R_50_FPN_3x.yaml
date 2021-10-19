@@ -1,0 +1,9 @@
+_BASE_: "../Base-RetinaNet.yaml"
+MODEL:
+  WEIGHTS: "/tmp/pycharm_project_652/output/model_0049999.pth"
+  RESNETS:
+    DEPTH: 50
+DATASETS:
+  TRAIN: ('voc_2007_trainval', 'voc_2012_trainval')
+  TEST: ('voc_2007_test',)
+OUTPUT_DIR: ./output/retina
