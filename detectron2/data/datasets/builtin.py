@@ -212,5 +212,5 @@ def register_all_pascal_voc(root="datasets"):
 register_all_coco()
 register_all_lvis()
 register_all_cityscapes()
-# register_all_pascal_voc()
-register_all_pascal_voc('/home/joseph/workspace/detectron2/datasets')
+register_all_pascal_voc()
+# register_all_pascal_voc('/home/joseph/workspace/detectron2/datasets')
