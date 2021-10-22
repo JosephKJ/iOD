@@ -1,56 +1,50 @@
-<img src=".github/Detectron2-Logo-Horz.svg" width="300" >
-
-Detectron2 is Facebook AI Research's next generation software system
-that implements state-of-the-art object detection algorithms.
-It is a ground-up rewrite of the previous version,
-[Detectron](https://github.com/facebookresearch/Detectron/),
-and it originates from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark/).
+### Incremental Object Detection via Meta-Learning
+To appear in an upcoming issue of the IEEE Transactions on Pattern Analysis and Machine Intelligence (*TPAMI*)
 
 <div align="center">
+  Teaser Figure
   <img src="https://user-images.githubusercontent.com/1381301/66535560-d3422200-eace-11e9-9123-5535d469db19.png"/>
 </div>
 
-### What's New
-* It is powered by the [PyTorch](https://pytorch.org) deep learning framework.
-* Includes more features such as panoptic segmentation, densepose, Cascade R-CNN, rotated bounding boxes, etc.
-* Can be used as a library to support [different projects](projects/) on top of it.
-  We'll open source more research projects in this way.
-* It [trains much faster](https://detectron2.readthedocs.io/notes/benchmarks.html).
+### Abstract
+In a real-world setting, object instances from new classes can be continuously encountered by object detectors. When existing object detectors are applied to such scenarios, their performance on old classes deteriorates significantly. A few efforts have been reported to address this limitation, all of which apply variants of knowledge distillation to avoid catastrophic forgetting. 
 
-See our [blog post](https://ai.facebook.com/blog/-detectron2-a-pytorch-based-modular-object-detection-library-/)
-to see more demos and learn about detectron2.
+We note that although distillation helps to retain previous learning, it obstructs fast adaptability to new tasks, which is a critical requirement for incremental learning. In this pursuit, we propose a meta-learning approach that learns to reshape model gradients, such that information across incremental tasks is optimally shared. This ensures a seamless information transfer via a meta-learned gradient preconditioning that minimizes forgetting and maximizes knowledge transfer. In comparison to existing meta-learning methods, our approach is task-agnostic, allows incremental addition of new-classes and scales to high-capacity models for object detection. 
 
-## Installation
+We evaluate our approach on a variety of incremental learning settings defined on PASCAL-VOC and MS COCO datasets, where our approach performs favourably well against state-of-the-art methods.
 
-See [INSTALL.md](INSTALL.md).
-
-## Quick Start
-
-See [GETTING_STARTED.md](GETTING_STARTED.md),
-or the [Colab Notebook](https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5).
-
-Learn more at our [documentation](https://detectron2.readthedocs.org).
-And see [projects/](projects/) for some projects that are built on top of detectron2.
-
-## Model Zoo and Baselines
-
-We provide a large set of baseline results and trained models available for download in the [Detectron2 Model Zoo](MODEL_ZOO.md).
+<div align="center">
+  Architecture Figure
+  <img src="https://user-images.githubusercontent.com/1381301/66535560-d3422200-eace-11e9-9123-5535d469db19.png"/>
+</div>
 
 
-## License
+### Installation and setup
+- Install the Detectron2 library that is packages along with this code base. See [INSTALL.md](INSTALL.md).
+- Download and extract Pascal VOC 2007 to `./datasets/VOC2007/`
+- Use the starter script: `run.sh`
 
-Detectron2 is released under the [Apache 2.0 license](LICENSE).
+### Trained Models and Logs
 
-## Citing Detectron
+| Setting | Reported mAP | Reproduced mAP | Commands | Models and logs |
+|:-------:|:------------:|:--------------:|:--------:|:---------------:|
+|   19+1  |     70.2     |      70.3      |  run.sh  |   Google Drive  |
+|   15+5  |     67.8     |      69.6      |  run.sh  |   Google Drive  |
+|  10+10  |     66.3     |      65.6      |  run.sh  |   Google Drive  |
 
-If you use Detectron2 in your research or wish to refer to the baseline results published in the [Model Zoo](MODEL_ZOO.md), please use the following BibTeX entry.
+
+### Acknowledgement
+The code is build on top of Detectron2 library. 
+
+
+### Citation
+If you find our research useful, please cite us:
 
 ```BibTeX
-@misc{wu2019detectron2,
-  author =       {Yuxin Wu and Alexander Kirillov and Francisco Massa and
-                  Wan-Yen Lo and Ross Girshick},
-  title =        {Detectron2},
-  howpublished = {\url{https://github.com/facebookresearch/detectron2}},
-  year =         {2019}
+@article{joseph2021incremental,
+  title={Incremental object detection via meta-learning},
+  author={Joseph, KJ and Rajasegaran, Jathushan and Khan, Salman and Khan, Fahad Shahbaz and Balasubramanian, Vineeth},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2021}
 }
 ```

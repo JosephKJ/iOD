@@ -16,7 +16,7 @@ MODEL:
     # Number of novel classes; these classes would be trained if TRAIN_ON_BASE_CLASSES is set to False
     NUM_NOVEL_CLASSES: 10
     POSITIVE_FRACTION: 0.25
-    NMS_THRESH_TEST: 0.3
+    NMS_THRESH_TEST: 0.4
   RPN:
     FREEZE_WEIGHTS: False
   ROI_BOX_HEAD:
@@ -61,6 +61,5 @@ SEED: 9999
 VERSION: 2
 
 FINETUNE:
-  MIN_NUM_IMG_PER_CLASS: 5
+  MIN_NUM_IMG_PER_CLASS: 10
   BATCH_SIZE: 2
-  USE_IMAGE_STORE: False

@@ -1,10 +1,16 @@
+# Use this config for evaluating the a trained model.
+# Usage: python tools/train_net.py --num-gpus 4 --config-file ./configs/PascalVOC-Detection/iOD/eval.yaml --eval-only
+# Do change:
+#   -- WEIGHTS
+#   -- NUM_BASE_CLASSES
+#   -- NUM_NOVEL_CLASSES
+
+
 _BASE_: "../../Base-RCNN-C4.yaml"
 MODEL:
 #  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
-#  WEIGHTS: "/home/joseph/workspace/detectron2/output/first_15/model_final.pth"
-#  WEIGHTS: "/home/joseph/workspace/detectron2/output/15_p_5_2000_0.6/model_0024999.pth"
-#  WEIGHTS: "/home/joseph/workspace/detectron2/output/15_p_5_mean_teacher_0.9_ft/model_0026999.pth"
-  WEIGHTS: "/home/joseph/workspace/detectron2/output/15_p_5_ft/model_final.pth"
+#  WEIGHTS: "./output/10_p_10_ft/model_final.pth"
+  WEIGHTS: "./output/plus_10/10_p_10_ft_with_extras/model_final.pth"
 #  WEIGHTS: "/home/joseph/workspace/detectron2/output/15_p_5/model_0019999.pth"
   MASK_ON: False
   RESNETS:
@@ -17,11 +23,11 @@ MODEL:
     # Flag to select whether to learn base classes or iOD expanded classes
     TRAIN_ON_BASE_CLASSES: False
     # Number of base classes; these classes would be trained if TRAIN_ON_BASE_CLASSES is set to True
-    NUM_BASE_CLASSES: 15
+    NUM_BASE_CLASSES: 10
     # Number of novel classes; these classes would be trained if TRAIN_ON_BASE_CLASSES is set to False
-    NUM_NOVEL_CLASSES: 5
+    NUM_NOVEL_CLASSES: 10
     POSITIVE_FRACTION: 0.25
-    NMS_THRESH_TEST: 0.3
+    NMS_THRESH_TEST: 0.4
   RPN:
     FREEZE_WEIGHTS: False
   ROI_BOX_HEAD:
@@ -32,45 +38,6 @@ INPUT:
 DATASETS:
   TRAIN: ('voc_2007_trainval',)
   TEST: ('voc_2007_test',)
-SOLVER:
-#  STEPS: (3000, 4000) # 21000, 22000
-#  MAX_ITER: 22500  # 17.4 epochs -> 18000 iterations 4500,
-  STEPS: (30000, 34000) # 21000, 22000
-  MAX_ITER: 36000  # 36000
-#  STEPS: (12000, 16000)
-#  MAX_ITER: 18000  # 17.4 epochs
-  WARMUP_ITERS: 100 # 100
-  LR_SCHEDULER_NAME: WarmupMultiStepLR # ReduceLROnPlateau WarmupMultiStepLR
-#  EXPLICIT_LR: 0.0001
-#OUTPUT_DIR: ./output/temp3
 OUTPUT_DIR: ./output/eval
-VIS_PERIOD: 17000
-DISTILL:
-  ENABLE: True
-  BACKBONE: True
-  RPN: False
-  ROI_HEADS: True
-  ONLY_FG_ROIS: False
-  # (1-LOSS_WEIGHT) (CLF / REG loss) + (LOSS_WEIGHT) ROI-Distillation
-  LOSS_WEIGHT: 0.2
-# Warp Grad
-WG:
-  ENABLE: True
-  TRAIN_WARP_AT_ITR_NO: 20
-  WARP_LAYERS: ("module.roi_heads.res5.2.conv3.weight",)
-  NUM_FEATURES_PER_CLASS: 100
-  NUM_IMAGES_PER_CLASS: 10
-  BATCH_SIZE: 2
-  USE_FEATURE_STORE: True
-  IMAGE_STORE_LOC: '/home/joseph/detectron2/15_p_5.pth'
-
-#  WARP_LAYERS: ("module.roi_heads.res5.0.conv3.weight", "module.roi_heads.res5.1.conv3.weight", "module.roi_heads.res5.2.conv3.weight")
-#  WARP_LAYERS: (
-#  "module.roi_heads.res5.0.conv2.weight",
-#  "module.roi_heads.res5.0.conv3.weight",
-#  "module.roi_heads.res5.1.conv2.weight",
-#  "module.roi_heads.res5.1.conv3.weight",
-#  "module.roi_heads.res5.2.conv2.weight",
-#  "module.roi_heads.res5.2.conv3.weight")
 SEED: 9999
 VERSION: 2
