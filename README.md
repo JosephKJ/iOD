@@ -23,9 +23,9 @@ We evaluate our approach on a variety of incremental learning settings defined o
 
 | Setting | Reported mAP | Reproduced mAP | Commands | Models and logs |
 |:-------:|:------------:|:--------------:|:--------:|:---------------:|
-|   19+1  |     70.2     |      70.3      |  run.sh  |   Google Drive  |
-|   15+5  |     67.8     |      69.6      |  run.sh  |   Google Drive  |
-|  10+10  |     66.3     |      65.6      |  run.sh  |   Google Drive  |
+|   19+1  |     70.2     |      70.3      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L1-L8)    |   Google Drive  |
+|   15+5  |     67.8     |      69.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L11-L19)  |   Google Drive  |
+|  10+10  |     66.3     |      65.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L22-L30)  |   Google Drive  |
 
 
 ## Acknowledgement
