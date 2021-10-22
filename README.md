@@ -27,6 +27,11 @@ We evaluate our approach on a variety of incremental learning settings defined o
 |   15+5  |     67.8     |      69.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L11-L19)  |   Google Drive  |
 |  10+10  |     66.3     |      65.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L22-L30)  |   Google Drive  |
 
+##### Configurations with which the above results are reproduced:
+- Python version: 3.6.7
+- PyTorch version: 1.3.0
+- CUDA version: 11.0
+- GPUs: 4 x NVIDIA GTX 1080-ti
 
 ## Acknowledgement
 The code is build on top of Detectron2 library. 
