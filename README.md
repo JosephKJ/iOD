@@ -27,7 +27,7 @@ We evaluate our approach on a variety of incremental learning settings defined o
 |   15+5  |     67.8     |      69.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L11-L19)  |   Google Drive  |
 |  10+10  |     66.3     |      65.6      |  [run.sh](https://github.com/JosephKJ/iOD/blob/main/run.sh#L22-L30)  |   Google Drive  |
 
-##### Configuration with which the above results were reproduced:
+##### Configurations with which the above results were reproduced:
 - Python version: 3.6.7
 - PyTorch version: 1.3.0
 - CUDA version: 11.0
