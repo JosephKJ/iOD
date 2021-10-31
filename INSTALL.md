@@ -21,8 +21,7 @@ also installs detectron2 with a few simple commands.
 
 After having the above dependencies, run:
 ```
-git clone https://github.com/facebookresearch/detectron2.git
-cd detectron2
+cd iOD
 python setup.py build develop
 
 # or if you are on macOS
