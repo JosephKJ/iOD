@@ -1,7 +1,10 @@
 ## Incremental Object Detection via Meta-Learning
 #### To appear in an upcoming issue of the IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)
 
+Early access on IEEE Xplore: [https://ieeexplore.ieee.org/document/9599446](https://ieeexplore.ieee.org/document/9599446)
+
 arXiv paper: [https://arxiv.org/abs/2003.08798](https://arxiv.org/abs/2003.08798)
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/4231550/138396577-bdef2d95-5f00-47c4-bf90-927d7231f090.png"/>
