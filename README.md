@@ -17,6 +17,15 @@ We note that although distillation helps to retain previous learning, it obstruc
 
 We evaluate our approach on a variety of incremental learning settings defined on PASCAL-VOC and MS COCO datasets, where our approach performs favourably well against state-of-the-art methods.
 
+<p align="center" width="100%">
+<img src="https://user-images.githubusercontent.com/4231550/145962389-75511c27-3d9f-4dd2-be93-934dcdf4d70c.jpg" width="800" />
+</p>
+
+<p align="center" width="80%">
+<strong>Figure:</strong> Qualitative results of our incremental object detector trained in a 10+10 setting where the first task contain instances of <i>aeroplane, bicycle, bird, boat, bottle, bus, car, cat, chair and cow</i>, while the second task learns instance from <i>diningtable, dog, horse, motorbike, person, pottedplant, sheep, sofa, train and tvmonitor</i>. Our model is able to detect instances of both tasks alike, without forgetting.
+</p>
+
+
 ## Installation and setup
 - Install the Detectron2 library that is packages along with this code base. See [INSTALL.md](INSTALL.md).
 - Download and extract Pascal VOC 2007 to `./datasets/VOC2007/`
