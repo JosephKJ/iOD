@@ -55,7 +55,7 @@ If you find our research useful, please consider citing us:
 
 ```BibTeX
 @ARTICLE {joseph2021incremental,
-author = {Joseph. KJ and J. Rajasegaran and S. Khan and F. Khan and V. N Balasubramanian},
+author = {Joseph. KJ and Jathushan. Rajasegaran and Salman. Khan and Fahad. Khan and Vineeth. N Balasubramanian},
 journal = {IEEE Transactions on Pattern Analysis & Machine Intelligence},
 title = {Incremental Object Detection via Meta-Learning},
 year = {2021},
