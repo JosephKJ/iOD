@@ -54,10 +54,17 @@ The code is build on top of Detectron2 library.
 If you find our research useful, please consider citing us:
 
 ```BibTeX
-@article{joseph2021incremental,
-  title={Incremental object detection via meta-learning},
-  author={Joseph, KJ and Rajasegaran, Jathushan and Khan, Salman and Khan, Fahad Shahbaz and Balasubramanian, Vineeth},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  year={2021}
+@ARTICLE {joseph2021incremental,
+author = {Joseph. KJ and J. Rajasegaran and S. Khan and F. Khan and V. N Balasubramanian},
+journal = {IEEE Transactions on Pattern Analysis & Machine Intelligence},
+title = {Incremental Object Detection via Meta-Learning},
+year = {2021},
+issn = {1939-3539},
+keywords = {task analysis;detectors;object detection;training;proposals;standards;feature extraction},
+doi = {10.1109/TPAMI.2021.3124133},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month = {nov}
 }
+
 ```
